@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.create(question_params)
+    flash[:notice] = "Question successfully added."
     redirect_to questions_path
   end
 
