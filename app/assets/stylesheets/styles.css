@@ -7,3 +7,20 @@
 li {
   list-style: none;
 }
+
+.question-title {
+  border-bottom: 1px solid gray;
+}
+.question-content {
+  padding-top: 1em;
+  border-bottom: 1px solid gray;
+
+}
+
+.answers {
+  padding-top: 1em;
+}
+
+.questions {
+  padding: 1em;
+}

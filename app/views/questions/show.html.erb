@@ -1,2 +1,16 @@
-<p><%= @question.title %></p>
-<p><%= @question.content %></p>
+<div class="question-title col-xs-12">
+  <h2><%= @question.title %></h2>
+</div>
+<div class="col-xs-6">
+  <div class="question-content">
+    <p><%= @question.content %></p>
+  </div>
+  <div class="answers">
+    <% @question.answers.each do |answer| %>
+      <div class="well">
+        <%= answer.content %>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to 'Answer', new_question_answer_path(@question) %>
+</div>
