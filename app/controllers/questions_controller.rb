@@ -8,15 +8,21 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
     @question = Question.new
   end
 
   def create
-    @question = Question.create(question_params)
-    flash[:notice] = "Question successfully added."
-    redirect_to questions_path
+    @user = User.find(params[:user_id])
+    @question = @user.questions.new(question_params)
+    if @question.save
+      flash[:notice] = "Question successfully added."
+      redirect_to questions_path
+    else
+      flash[:alert] = "There was a problem adding your photo."
+      redirect_to :back
+    end
   end
-
 
   private
 

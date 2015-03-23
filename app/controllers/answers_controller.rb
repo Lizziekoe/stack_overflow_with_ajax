@@ -5,8 +5,10 @@ class AnswersController < ApplicationController
   end
 
   def create
+    @user = current_user
     @question = Question.find(params[:question_id])
-    @answer = @question.answers.new(answer_params)
+    @answer = @user.answers.new(answer_params)
+    @answer.question_id = @question.id
     if @answer.save
       flash[:notice] = "Answer posted!"
       redirect_to question_path(@question)
