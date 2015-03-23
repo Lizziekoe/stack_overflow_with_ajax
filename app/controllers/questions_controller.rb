@@ -8,12 +8,11 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
     @question = Question.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @question = @user.questions.new(question_params)
     if @question.save
       flash[:notice] = "Question successfully added."
