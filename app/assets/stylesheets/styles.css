@@ -1,0 +1,9 @@
+.main-nav {
+  color: white;
+  background-color: lightblue;
+  padding: 1%;
+}
+
+li {
+  list-style: none;
+}

@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StackOverflowClone</title>
+  <title>Stack Overflow Clone</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container">
+    <h1>Stack Overflow</h1>
+    <nav class="main-nav">
+      <ul class="list-unstyled list-inline">
+        <li><%= link_to "Home", questions_path %></li>
+        <li><%= link_to "New Question", new_question_path %></li>
+        <li><%= link_to "About" %></li>
+      </ul>
+    </nav>
+    <%= yield %>
+  </div>
 </body>
 </html>
