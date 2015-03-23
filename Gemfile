@@ -16,6 +16,7 @@ group :development do
   gem 'byebug'
   gem 'web-console'
   gem 'spring'
+  gem "letter_opener"
 end
 
 group :test, :development do
