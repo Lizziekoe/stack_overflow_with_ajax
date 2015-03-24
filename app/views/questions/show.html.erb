@@ -9,8 +9,21 @@
     <% @question.answers.each do |answer| %>
       <% if @question.best_answer_id == answer.id %>
         <div class="well">
-          <p>Best Answer:</p>
-          <%= answer.content %>
+          <div class="col-xs-3 col-md-3">
+            <div class="row">
+              <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+            </div>
+            <div class="row">
+              <p>0 votes</p>
+            </div>
+            <div class="row">
+              <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+            </div>
+          </div>
+
+            <p>Best Answer:</p>
+            <p><%= answer.content %></p>
+
         </div>
       <% end %>
     <% end %>
@@ -19,6 +32,17 @@
     <% @question.answers.each do |answer| %>
       <% if @question.best_answer_id != answer.id %>
         <div class="well">
+          <div class="col-xs-3 col-md-3">
+            <div class="row">
+              <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+            </div>
+            <div class="row">
+              <p>0 votes</p>
+            </div>
+            <div class="row">
+              <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+            </div>
+          </div>
           <p><%= answer.content %></p>
           <% if current_user == @question.user %>
             <p><%= link_to "Select as Best", question_path(@question, question: {best_answer_id: answer.id}), data: { method: "patch" }%></p>
