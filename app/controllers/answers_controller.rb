@@ -27,11 +27,6 @@ class AnswersController < ApplicationController
       flash[:alert] = "Error. Answer not selected!"
       redirect_to :back
     end
-    @answer.question.answers.each do |answer|
-      if answer != @answer
-        answer.update(best: false)
-      end
-    end
   end
 
 private
@@ -41,6 +36,6 @@ private
   end
 
   def answer_params
-    params.require(:answer).permit(:content, :best)
+    params.require(:answer).permit(:content)
   end
 end

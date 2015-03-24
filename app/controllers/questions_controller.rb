@@ -23,9 +23,20 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      flash[:notice] = "Answer selected as best!"
+      redirect_to question_path(@question)
+    else
+      flash[:alert] = "Error. Answer not selected!"
+      redirect_to :back
+    end
+  end
+
   private
 
   def question_params
-    params.require(:question).permit(:title, :content)
+    params.require(:question).permit(:title, :content, :best_answer_id)
   end
 end
