@@ -5,11 +5,26 @@
   <div class="question-content">
     <p><%= @question.content %></p>
   </div>
+  <div class="best-answer">
+    <% @question.answers.each do |answer| %>
+      <% if answer.best %>
+        <div class="well">
+          <p>Best Answer:</p>
+          <%= answer.content %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <div class="answers">
     <% @question.answers.each do |answer| %>
-      <div class="well">
-        <%= answer.content %>
-      </div>
+      <% if !answer.best %>
+        <div class="well">
+          <p><%= answer.content %></p>
+          <% if current_user == @question.user %>
+            <p><%= link_to "Select as Best", question_answer_path(@question, answer, answer: {best: true}), data: { method: "patch" }%></p>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <%= link_to 'Answer', new_question_answer_path(@question) %>
