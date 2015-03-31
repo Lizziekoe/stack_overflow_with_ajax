@@ -5,9 +5,9 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @user = current_user
+    @enjoyer = current_enjoyer
     @question = Question.find(params[:question_id])
-    @answer = @user.answers.new(answer_params)
+    @answer = @enjoyer.answers.new(answer_params)
     @answer.question_id = @question.id
     if @answer.save
       flash[:notice] = "Answer posted!"
