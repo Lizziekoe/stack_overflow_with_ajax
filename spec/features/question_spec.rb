@@ -3,10 +3,11 @@ require 'rails_helper'
     it "adds a new question", js: true do
       enjoyer = FactoryGirl.create(:enjoyer)
       login(enjoyer)
+      visit questions_path
       click_on "New Question"
       fill_in "Title", :with => "question title"
       fill_in "Content", :with => "question content"
       click_on "Ask"
-      expect(page).to have_content 'successfully'
+      expect(page).to have_content 'question'
     end
 end

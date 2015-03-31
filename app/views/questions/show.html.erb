@@ -29,28 +29,7 @@
     <% end %>
   </div>
   <div class="answers">
-    <% @question.answers.each do |answer| %>
-      <% if @question.best_answer_id != answer.id %>
-        <div class="well">
-          <div class="col-xs-3 col-md-3">
-            <div class="row">
-              <%= link_to "Up", vote_path(answer), data: { method: "patch" } %>
-              <!-- <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span> -->
-            </div>
-            <div class="row">
-              <p><%= answer.votes_for.size %></p>
-            </div>
-            <div class="row">
-              <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-            </div>
-          </div>
-          <p><%= answer.content %></p>
-          <% if current_enjoyer == @question.enjoyer %>
-            <p><%= link_to "Select as Best", question_path(@question, question: {best_answer_id: answer.id}), data: { method: "patch" }%></p>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render @question.answers %>
   </div>
-  <%= link_to 'Answer', new_question_answer_path(@question) %>
+  <%= link_to 'Answer', new_question_answer_path(@question), id: "new_answer_link", remote: true %>
 </div>

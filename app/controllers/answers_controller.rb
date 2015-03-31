@@ -10,11 +10,21 @@ class AnswersController < ApplicationController
     @answer = @enjoyer.answers.new(answer_params)
     @answer.question_id = @question.id
     if @answer.save
-      flash[:notice] = "Answer posted!"
-      redirect_to question_path(@question)
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Answer posted!"
+          redirect_to question_path(@question)
+        end
+        format.js
+      end
     else
-      flash[:alert] = "Error. Answer not posted!"
-      redirect_to :back
+      respond_to do |format|
+        format.html do
+          flash[:alert] = "Error. Answer not posted!"
+          redirect_to :back
+        end
+        format.js
+      end
     end
   end
 
