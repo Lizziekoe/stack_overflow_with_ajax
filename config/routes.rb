@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :enjoyers
   root to: 'questions#index'
-  resources :sessions
-  resources :users
   resources :questions do
     resources :answers
   end

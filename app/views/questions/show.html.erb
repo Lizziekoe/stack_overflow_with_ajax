@@ -45,7 +45,7 @@
             </div>
           </div>
           <p><%= answer.content %></p>
-          <% if current_user == @question.user %>
+          <% if current_enjoyer == @question.enjoyer %>
             <p><%= link_to "Select as Best", question_path(@question, question: {best_answer_id: answer.id}), data: { method: "patch" }%></p>
           <% end %>
         </div>

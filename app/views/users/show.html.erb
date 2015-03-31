@@ -1,7 +1,0 @@
-<p><%= @user.username %></p>
-<% @user.answers.each do |answer| %>
-  <div class="answer">
-    <%= answer.content %>
-    <%= link_to answer.question.title, question_path(answer.question) %>
-  </div>
-<% end %>
