@@ -15,11 +15,21 @@ class QuestionsController < ApplicationController
     @enjoyer = current_enjoyer
     @question = @enjoyer.questions.new(question_params)
     if @question.save
-      flash[:notice] = "Question successfully added."
-      redirect_to questions_path
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Question successfully added."
+          redirect_to questions_path
+        end
+        format.js
+      end
     else
-      flash[:alert] = "There was a problem adding your photo."
-      redirect_to :back
+      respond_to do |format|
+        format.html do
+          flash[:alert] = "There was a problem adding your question."
+          redirect_to :back
+        end
+        format.js
+      end
     end
   end
 

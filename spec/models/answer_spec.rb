@@ -6,7 +6,8 @@ describe Answer do
   it { should validate_presence_of :content }
 
   it "sends an email when a question is answered" do
-    answer = FactoryGirl.create(:answer)
-    AnswerMailer.deliveries.last.to.should eq answer.question.user.username
+    question = FactoryGirl.create(:question)
+    answer = FactoryGirl.create(:answer, question: question)
+    AnswerMailer.deliveries.last.to.should eq [question.enjoyer.email]
   end
 end

@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory(:enjoyer) do
-    email 'enjoyer@happy.com'
+    sequence(:email) { |n| "enjoyer#{n}@happy.com" }
+    password 'password'
   end
   factory(:question) do
     title 'example question title'

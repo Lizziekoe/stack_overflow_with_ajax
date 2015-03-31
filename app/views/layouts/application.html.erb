@@ -14,7 +14,6 @@
       <ul class="list-unstyled list-inline">
         <li><%= link_to "Home", questions_path %></li>
         <% if enjoyer_signed_in? %>
-          <li><%= link_to "New Question", new_question_path %></li>
           <li><%= link_to "Logout", destroy_enjoyer_session_path, data: {method: "delete"} %></li>
         <% else %>
           <li><%= link_to "Login", new_enjoyer_session_path %></li>

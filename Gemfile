@@ -9,9 +9,8 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'acts_as_votable', '~> 0.10.0'
-
+gem 'poltergeist'
 gem 'devise'
->>>>>>> devise
 
 group :development do
   gem 'better_errors'
