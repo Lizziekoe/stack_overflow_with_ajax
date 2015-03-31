@@ -1,4 +1,1 @@
-
-  $('#up').click(function () {
-    $('#vote').html('<%= @answer.get_upvotes.size %>');
-  });
+$('#vote-<%= @answer.id %>').html('<%= @answer.get_upvotes.size %>');

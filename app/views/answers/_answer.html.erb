@@ -2,13 +2,13 @@
   <div class="well answer row">
     <div class="col-xs-3 col-md-3">
       <div class="row">
-        <%= link_to '<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>'.html_safe, vote_path(answer), id: "up", method: :patch, remote: true %>
+        <%= link_to '<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>'.html_safe, vote_path(answer, { type: :up }), id: "up", method: :patch, remote: true %>
       </div>
       <div class="row">
-        <p id="vote"><%= answer.votes_for.size %></p>
+        <p id="vote-<%= answer.id %>"><%= answer.votes_for.size %></p>
       </div>
-      <div class="row down">
-        <%= link_to '<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>'.html_safe, vote_path(answer), method: :patch %>
+      <div class="row">
+        <%= link_to '<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>'.html_safe, vote_path(answer, { type: :down }), id: "down", method: :patch, remote: true %>
       </div>
     </div>
         <p><%= answer.content %></p>
